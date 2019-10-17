@@ -92,7 +92,7 @@ mixed.length === 6; /// true
 More on this later
 
 @[1-4]
-@[1-8]
+@[1-9]
 
 ---
 
@@ -201,6 +201,7 @@ function getLastRelationship(character) {
 Function Expressions
 
 ```js
+// functions too are objects!
 const getName = function name(character) {
   return character.name;
 };
@@ -236,11 +237,11 @@ Let's take an example
 
 ---
 
-@snap[west span-45]
+@snap[north-west span-45]
 ```js
 const character = {
   name: "Joey Tribbianni",
-  catchphrase: `How you doin'?`,
+  catchphrase: "How you doin'?",
   relationships: [
     'Angela', 'Kathy',
     'Katie', 'Ginger', 'Janine'
@@ -258,7 +259,9 @@ function getLastRelationship(character) {
 }
 
 ```
-@snap[east span-50]
+@snapend
+
+@snap[north-east span-45]
 ```js
 class Character {
   constructor(name, age, catchphrase) {
@@ -276,7 +279,7 @@ class Character {
     this.relationships[this.relationships.length - 1];
 }
 ```
-
+@snapend
 ---
 ## Instance
 ```js
