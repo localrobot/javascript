@@ -5,14 +5,15 @@ class Ross extends Character {
     this.divorces = [];
   }
 
-  marry = name => this.updateRelationship(name, true);
-
   updateRelationship(name, isGettingMarried) {
     if (isGettingMarried) {
       this.marriedTo = name;
     }
     super.updateRelationship(name);
   }
+
+  // public class field syntax
+  marry = name => this.updateRelationship(name, true);
 
   divorce() {
     this.divorces.push(this.marriedTo);

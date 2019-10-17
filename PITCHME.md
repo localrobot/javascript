@@ -237,31 +237,6 @@ Let's take an example
 
 ---
 
-@snap[north-west span-45]
-```js
-const character = {
-  name: "Joey Tribbianni",
-  catchphrase: "How you doin'?",
-  relationships: [
-    'Angela', 'Kathy',
-    'Katie', 'Ginger', 'Janine'
-  ];
-  age: 26,
-};
-
-function updateRelationship(character, name) {
-  character.relationships.push(name);
-}
-
-function getLastRelationship(character) {
-  const relationships = character.relationships;
-  return relationships[relationships.length - 1];
-}
-
-```
-@snapend
-
-@snap[north-east span-45]
 ```js
 class Character {
   constructor(name, age, catchphrase) {
@@ -279,9 +254,11 @@ class Character {
     this.relationships[this.relationships.length - 1];
 }
 ```
-@snapend
+
 ---
+
 ## Instance
+
 ```js
 const joey = new Character('Joey Tribbiani', 26, "How you doin'?");
 
@@ -311,8 +288,6 @@ class Ross extends Character {
     this.divorces = [];
   }
 
-  marry = name => this.updateRelationship(name, true);
-
   updateRelationship(name, isGettingMarried) {
     if (isGettingMarried) {
       this.marriedTo = name;
@@ -320,12 +295,20 @@ class Ross extends Character {
     super.updateRelationship(name);
   }
 
+  // public class field syntax
+  marry = name => this.updateRelationship(name, true);
+
   divorce() {
     this.divorces.push(this.marriedTo);
     this.marriedTo = null;
   }
 }
 ```
+
+@[1-6, 22]
+@[1, 8-13, 22]
+@[1, 15-16, 22]
+@[1, 18-22]
 
 ---
 
@@ -341,8 +324,13 @@ ross.divorce();
 
 ## Prototype Chain
 ---
+@snap[fragment]
+@box[](There are no classes in JS.)
+@snapend
 
-There are no classes in JS. They are just syntactic suger.
+@snap[fragment]
+@box[](They are just syntactic suger.)
+@snapend
 
 ---
 
@@ -360,6 +348,7 @@ Character.prototype.updateRelationship = function(name) {
 Character.prototype.getLastRelationship = () =>
   this.relationships[this.relationships.length - 1];
 ```
+
 @[1-6]
 @[1-11]
 
@@ -386,6 +375,7 @@ Ross.prototype.divorce = () => {
   this.marriedTo = null
 }
 ```
+
 @[1-5]
 @[1-6]
 @[1-7]
@@ -395,17 +385,26 @@ Ross.prototype.divorce = () => {
 
 ---
 
-        .call()
-        .bind()
-        .apply()
-        .name
+## Builtin Objects
 
-Object <- Function <- Inbuilt Objects
+@snap[west span-50]
+@box[](Object)
+@fa[arrow-up]
+@box[](Function)
+@fa[arrow-up]
+@box[](Inbuilt Objects)
+@snapend
 
-.hasOwnProperty()
-.prototype
-.prototype.constructor
-.toString()
+@snap[north-east span-50]
+`.call()`
+`.bind()`
+`.apply()`
+`.name`
+@snapend
 
-```js
-```
+@snap[east span-50]
+`.hasOwnProperty()`
+`.prototype`
+`.prototype.constructor`
+`.toString()`
+@snapend
