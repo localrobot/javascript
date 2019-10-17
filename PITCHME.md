@@ -35,7 +35,14 @@ Anurag Kumar
 
 ## Variables
 
-@code[js](snippets/01-variables.js)
+```js
+// A reassignable varibale
+let character = 'Ross';
+var tvSeries = 'Friends';
+
+// Non reassignable
+const rachel = 'Rachel';
+```
 
 ---
 
@@ -73,27 +80,29 @@ Indexed using numbers
 ```js
 const characters = ['Chandler', 'Joey', 'Monica', 'Ross', 'Pheobe', 'Rachel'];
 
-const mixed = ['Friends', 1994, true, [25, 17], null];
+const mixed = ['Friends', 1994, , true, [25, 17], null];
 
-mixed[1]; // or mixed["1"]
-// Output: 1994
-mixed[6];
-//Output: undefined
+mixed[1]; // 1994
+mixed["4"]  // [25, 17]
+mixed[6]; // undefined
+mixed[2]; // undefined
+mixed.length === 6; /// true
 ```
 
 More on this later
 
 @[1-4]
-@[1-6]
 @[1-8]
-@[1-10]
 
 ---
 
 ## Loops
 
 ```js
-const characters = ['Chandler', 'Joey', 'Monica', 'Ross', 'Pheobe', 'Rachel'];
+const characters = [
+  'Chandler', 'Joey', 'Monica',
+  'Ross', 'Pheobe', 'Rachel'
+];
 
 for (let i = 0; i < characters.length; i++) {
   console.log(characters[i]);
@@ -124,8 +133,8 @@ Indexed using string
 const joey = {
   name: "Joey Tribbianni",
   catchphrase: `How you doin'?`,
-  relationships: ['Angela', 'Kathy', 'Katie', 'Ginger', 'Janine'];
-  age: 26
+  relationships: ['Angela', 'Kathy', 'Katie', 'Ginger', 'Janine'],
+  age: 26,
 };
 
 joey.age            // "How you doin'?"
@@ -133,7 +142,7 @@ joey.isGuestStar    // undefined    // Yup! No error
 
 joey.age = 28
 joey.isMainCharacter = true;    // Can do this too.
-console.log(joey);      // has a new property
+console.log(joey);      // joey now has a new property
 ```
 
 @[1-6]
@@ -145,6 +154,13 @@ console.log(joey);      // has a new property
 ## You can loop over Objects too!
 
 ```js
+const joey = {
+  name: "Joey Tribbianni",
+  catchphrase: `How you doin'?`,
+  relationships: ['Angela', 'Kathy', 'Katie', 'Ginger', 'Janine'],
+  age: 26,
+};
+
 // notice `in` instead of `of` as with Arrays
 for (const key in joey) {
   // will talk about this during inheritence
@@ -193,7 +209,7 @@ const getName = function(character) {
   return character.name;
 };
 
-const getName = character => {
+const getName = (character) => {
   return character.name;
 };
 
@@ -220,12 +236,16 @@ Let's take an example
 
 ---
 
+@snap[west span-45]
 ```js
 const character = {
   name: "Joey Tribbianni",
   catchphrase: `How you doin'?`,
-  relationships: ['Angela', 'Kathy', 'Katie', 'Ginger', 'Janine'];
-  age: 26
+  relationships: [
+    'Angela', 'Kathy',
+    'Katie', 'Ginger', 'Janine'
+  ];
+  age: 26,
 };
 
 function updateRelationship(character, name) {
@@ -238,9 +258,7 @@ function getLastRelationship(character) {
 }
 
 ```
-
----
-
+@snap[east span-50]
 ```js
 class Character {
   constructor(name, age, catchphrase) {
@@ -254,12 +272,13 @@ class Character {
     this.relationships.push(name);
   }
 
-  getLastRelationship = () => this.relationships[this.relationships.length - 1];
+  getLastRelationship = () =>
+    this.relationships[this.relationships.length - 1];
 }
 ```
 
 ---
-
+## Instance
 ```js
 const joey = new Character('Joey Tribbiani', 26, "How you doin'?");
 
@@ -273,12 +292,11 @@ console.log(joey.getLastRelationship()); // "Kathy"
 
 @[1]
 @[1-3]
-@[1-6]
-@[1-8]
+@[1, 5-8]
 
 ---
 
-Inheritance
+# Inheritance
 
 ---
 
@@ -312,18 +330,21 @@ class Ross extends Character {
 const ross = new Ross(30, "Hi.. :'(");
 ross.name; // "Ross Geller"
 ross.marry('Carol');
-ross.getLastRelationship();
+ross.getLastRelationship(); // parent class's method
 ross.divorce();
 ```
 
 ---
 
-Prototype Chain
+## Prototype Chain
+---
+
+There are no classes in JS. They are just syntactic suger.
 
 ---
 
 ```js
-function Character() {
+function Character(name, age, catchphrase) {
   this.name = name;
   this.age = age;
   this.catchphrase = catchphrase;
@@ -333,14 +354,16 @@ Character.prototype.updateRelationship = function(name) {
   this.relationships.push(name);
 };
 
-Character.prototype.getLastRelationship = () => this.relationships[this.relationships.length - 1];
+Character.prototype.getLastRelationship = () =>
+  this.relationships[this.relationships.length - 1];
 ```
+@[1-6]
+@[1-11]
 
 ---
 
 ```js
-
-function Ross {
+function Ross(age, catchphrase) {
   Character.call(this, "Ross Geller", age, catchphrase);
   this.marriedTo = null;
   this.divorces = [];
@@ -359,8 +382,13 @@ Ross.prototype.divorce = () => {
   this.divorces.push(this.marriedTo);
   this.marriedTo = null
 }
-
 ```
+@[1-5]
+@[1-6]
+@[1-7]
+@[1-9]
+@[1-14]
+@[1-19]
 
 ---
 

@@ -1,6 +1,6 @@
 // A reassignable varibale
-let character = "Ross";
-var tvSeries = "Friends";
+let character = 'Ross';
+var tvSeries = 'Friends';
 
 // Non reassignable
-const rachel = "Rachel";
+const rachel = 'Rachel';
