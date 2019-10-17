@@ -523,6 +523,22 @@ const joey = Object.fromEntries(Object.entries(joey));
 ![](assets/img/async.webmp)
 
 ---
+
+### Promise
+
+---
+
+### Observable
+
+---
+### Subject
+---
+### Behaviour Subject
+---
+### Observer
+---
+### Subscription
+---
 ### ES6+
 - Template String, Template Tagged String
 - Arrow Functions, this binding
@@ -536,3 +552,15 @@ const joey = Object.fromEntries(Object.entries(joey));
 - static, get, set
 
 ## Reference
+1. [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Introduction)
+2. [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS)
+3. [What are the differences between parallel, concurrent, and asynchronous programming?](https://qr.ae/TWAVAQ)
+4. [Asynchronous Python](https://www.youtube.com/watch?v=iG6fr81xHKA)
+5. [What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
+6. [Exploring JS](https://exploringjs.com/)
+7. [Eloquent Javascript](http://eloquentjavascript.net/)
+8. [Javascript The Code](http://dmitrysoshnikov.com/ecmascript/javascript-the-core-2nd-edition/)
+9. [The introduction to Reactive Programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
+10. [What is a Closure?](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-closure-b2f0d2152b36)
+11. [Classical vs Prototypical Inheritance](https://stackoverflow.com/a/19640910/6561961)
+12. [Object Prototypes](https://stackoverflow.com/questions/1595611/how-to-properly-create-a-custom-object-in-javascript/1598077#1598077)
