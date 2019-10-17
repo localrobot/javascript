@@ -325,3 +325,65 @@ ross.divorce();
 ```
 
 ---
+
+Prototype Chain
+
+---
+
+```js
+function Character() {
+  this.name = name;
+  this.age = age;
+  this.catchphrase = catchphrase;
+  this.relationships = [];
+}
+Character.prototype.updateRelationship = function(name) {
+  this.relationships.push(name);
+}
+
+Character.prototype.getLastRelationship = () =>
+  this.relationships[this.relationships.length - 1];
+```
+
+---
+
+```js
+
+function Ross {
+  Character.call(this, "Ross Geller", age, catchphrase);
+  this.marriedTo = null;
+  this.divorces = [];
+}
+Ross.prototype = Object.create(Character.prototype);
+Ross.prototype.constructor = Ross;
+
+Ross.prototype.marry = (name) => this.updateRelationship(name, true);
+
+Ross.prototype.updateRelationship = (name, isGettingMarried) => {
+  if (isGettingMarried) { this.marriedTo = name; }
+  Character.prototype.updateRelationship.call(this, name);
+}
+
+Ross.prototype.divorce = () => {
+  this.divorces.push(this.marriedTo);
+  this.marriedTo = null
+}
+
+```
+
+---
+        .call()
+        .bind()
+        .apply()
+        .name
+
+Object <- Function <- Inbuilt Objects
+
+.hasOwnProperty()
+.prototype
+.prototype.constructor
+.toString()
+
+```js
+
+```
