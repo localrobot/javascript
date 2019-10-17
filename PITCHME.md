@@ -510,17 +510,17 @@ const joey = Object.fromEntries(Object.entries(joey));
 ---
 ### Parallel
 
-![](assets/img/parallel.webmp)
+![](assets/img/parallel.webp)
 
 ---
 ### Cocurrent
 
-![](assets/img/concurrent.webmp)
+![](assets/img/concurrent.webp)
 
 ---
 ### Async
 
-![](assets/img/async.webmp)
+![](assets/img/async.webp)
 
 ---
 
