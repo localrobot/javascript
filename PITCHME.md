@@ -75,6 +75,8 @@ if (character === "Ross") {
 
 ## Arrays
 
+Indexed using numbers
+
 ```js
 const characters = ["Chandler", "Joey", "Monica", "Ross", "Pheobe", "Rachel"];
 
@@ -85,6 +87,8 @@ mixed[1]; // or mixed["1"]
 mixed[6];
 //Output: undefined
 ```
+
+More on this later
 
 @[1]
 @[1-3]
@@ -102,7 +106,7 @@ for (let i = 0; i < characters.length; i++) {
   console.log(characters[i]);
 }
 
-for (let character of characters) {
+for (const character of characters) {
   console.log(character);
 }
 
@@ -121,6 +125,8 @@ while (i < characters.length) {
 
 ## Objects
 
+Indexed using string
+
 ```js
 const joey = {
   name: "Joey Tribbianni",
@@ -129,6 +135,74 @@ const joey = {
   age: 26
 };
 
-joey.age            // How you doing?
+joey.age            // "How you doing?"
 joey.isGuestStar    // undefined
 ```
+
+@[1-6]
+@[1-9]
+
+---
+
+## You can loop over Objects too!
+
+```js
+for (const key in joey) {
+  if (joey.hasOwnProperty(key)) {
+    console.log(joey[key]);
+  }
+}
+```
+
+More on this later
+
+---
+
+# Functions
+
+---
+
+### Simplest way
+
+```js
+function updateRelationship(character, name) {
+  character.relationships.push(name);
+}
+
+function getCurrentRelationship(character) {
+  const relationships = character.relationships;
+  return relationships[relationships.length - 1];
+}
+```
+
+@[1-3]
+@[5-8]
+
+---
+
+### Another way
+
+Function Expressions
+
+```js
+const getName = function(character) {
+  return character.name;
+};
+
+const getName = function name(character) {
+  return character.name;
+};
+
+const getName = (character) => {
+  return character.name;
+};
+
+const getName = character => character.name;
+```
+
+@[1-3]
+@[1-7]
+@[1-11]
+@[1-13]
+
+---
