@@ -35,14 +35,7 @@ Anurag Kumar
 
 ## Variables
 
-```js
-// A reassignable varibale
-let character = "Ross";
-var tvSeries = "Friends";
-
-// Non reassignable
-const rachel = "Rachel";
-```
+@code[js](snippets/01-variables.js)
 
 ---
 
@@ -59,12 +52,12 @@ const rachel = "Rachel";
 ## Control Flow
 
 ```js
-let wereOnABreak;   // default value is undefined
+let wereOnABreak; // default value is undefined
 // let wereOnABreak = undefined;    // NEVER do this
 
-if (character === "Ross") {
+if (character === 'Ross') {
   wereOnABreak = true;
-} else if (character === "Rachel") {
+} else if (character === 'Rachel') {
   wereOnABreak = false;
 } else {
   wereOnABreak = null;
@@ -78,12 +71,9 @@ if (character === "Ross") {
 Indexed using numbers
 
 ```js
-const characters = [
-  "Chandler", "Joey", "Monica",
-  "Ross", "Pheobe", "Rachel"
-];
+const characters = ['Chandler', 'Joey', 'Monica', 'Ross', 'Pheobe', 'Rachel'];
 
-const mixed = ["Friends", 1994, true, [25, 17], null];
+const mixed = ['Friends', 1994, true, [25, 17], null];
 
 mixed[1]; // or mixed["1"]
 // Output: 1994
@@ -103,10 +93,7 @@ More on this later
 ## Loops
 
 ```js
-const characters = [
-  "Chandler", "Joey", "Monica",
-  "Ross", "Pheobe", "Rachel"
-];
+const characters = ['Chandler', 'Joey', 'Monica', 'Ross', 'Pheobe', 'Rachel'];
 
 for (let i = 0; i < characters.length; i++) {
   console.log(characters[i]);
@@ -152,13 +139,16 @@ console.log(joey);      // has a new property
 @[1-6]
 @[1-9]
 @[1-13]
+
 ---
 
 ## You can loop over Objects too!
 
 ```js
-for (const key in joey) {   // notice `in` instead of `of` as with Arrays
-  if (joey.hasOwnProperty(key)) {   // will talk about this during inheritence
+// notice `in` instead of `of` as with Arrays
+for (const key in joey) {
+  // will talk about this during inheritence
+  if (joey.hasOwnProperty(key)) {
     console.log(joey[key]);
   }
 }
@@ -203,13 +193,13 @@ const getName = function(character) {
   return character.name;
 };
 
-const getName = (character) => {
+const getName = character => {
   return character.name;
 };
 
 const getName = character => character.name;
 
-const getAge = character => ({age: character.age});
+const getAge = character => ({ age: character.age });
 ```
 
 @[1-3]
@@ -264,23 +254,23 @@ class Character {
     this.relationships.push(name);
   }
 
-  getLastRelationship = () =>
-    this.relationships[this.relationships.length - 1];
+  getLastRelationship = () => this.relationships[this.relationships.length - 1];
 }
 ```
 
 ---
 
 ```js
-const joey = new Character("Joey Tribbiani", 26, "How you doin'?")
+const joey = new Character('Joey Tribbiani', 26, "How you doin'?");
 
-console.log(joey.getLastRelationship());     // undefined
+console.log(joey.getLastRelationship()); // undefined
 
-joey.updateRelationship("Angela");
-joey.updateRelationship("Kathy");
+joey.updateRelationship('Angela');
+joey.updateRelationship('Kathy');
 
-console.log(joey.getLastRelationship());     // "Kathy"
+console.log(joey.getLastRelationship()); // "Kathy"
 ```
+
 @[1]
 @[1-3]
 @[1-6]
@@ -295,21 +285,23 @@ Inheritance
 ```js
 class Ross extends Character {
   constructor(age, catchphrase) {
-    super("Ross Geller", age, catchphrase);
+    super('Ross Geller', age, catchphrase);
     this.marriedTo = null;
     this.divorces = [];
   }
 
-  marry = (name) => this.updateRelationship(name, true);
+  marry = name => this.updateRelationship(name, true);
 
   updateRelationship(name, isGettingMarried) {
-    if (isGettingMarried) { this.marriedTo = name; }
+    if (isGettingMarried) {
+      this.marriedTo = name;
+    }
     super.updateRelationship(name);
   }
 
   divorce() {
     this.divorces.push(this.marriedTo);
-    this.marriedTo = null
+    this.marriedTo = null;
   }
 }
 ```
@@ -318,9 +310,9 @@ class Ross extends Character {
 
 ```js
 const ross = new Ross(30, "Hi.. :'(");
-ross.name   // "Ross Geller"
-ross.marry("Carol");
-ross.getLastRelationship()
+ross.name; // "Ross Geller"
+ross.marry('Carol');
+ross.getLastRelationship();
 ross.divorce();
 ```
 
@@ -339,10 +331,9 @@ function Character() {
 }
 Character.prototype.updateRelationship = function(name) {
   this.relationships.push(name);
-}
+};
 
-Character.prototype.getLastRelationship = () =>
-  this.relationships[this.relationships.length - 1];
+Character.prototype.getLastRelationship = () => this.relationships[this.relationships.length - 1];
 ```
 
 ---
@@ -372,6 +363,7 @@ Ross.prototype.divorce = () => {
 ```
 
 ---
+
         .call()
         .bind()
         .apply()
@@ -385,5 +377,4 @@ Object <- Function <- Inbuilt Objects
 .toString()
 
 ```js
-
 ```
