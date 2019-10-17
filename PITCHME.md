@@ -56,6 +56,10 @@ const rachel = 'Rachel';
 
 ---
 
+## Short Circuit Evaluation
+Default value trick
+
+---
 ## Control Flow
 
 ```js
@@ -219,11 +223,11 @@ const getName = character => character.name;
 const getAge = character => ({ age: character.age });
 ```
 
-@[1-3]
-@[1-7]
-@[1-11]
-@[1-13]
-@[1-15]
+@[1-4]
+@[1-9]
+@[1-12]
+@[1-14]
+@[1-16]
 
 ---
 
@@ -324,12 +328,10 @@ ross.divorce();
 
 ## Prototype Chain
 ---
-@snap[fragment]
-@box[](There are no classes in JS.)
-@snapend
+@box[text-orange](There are no classes in JS.)
 
 @snap[fragment]
-@box[](They are just syntactic suger.)
+@box[text-orange](They are just syntactic suger.)
 @snapend
 
 ---
@@ -385,26 +387,152 @@ Ross.prototype.divorce = () => {
 
 ---
 
-## Builtin Objects
+## Functional Programming
 
-@snap[west span-50]
-@box[](Object)
-@fa[arrow-up]
-@box[](Function)
-@fa[arrow-up]
-@box[](Inbuilt Objects)
-@snapend
+@li
+- Functions as first class citizens
+- No Side effects
+- Like a math function
+- Same input, same output
+@liend
 
-@snap[north-east span-50]
-`.call()`
-`.bind()`
-`.apply()`
-`.name`
-@snapend
+---
 
-@snap[east span-50]
-`.hasOwnProperty()`
-`.prototype`
-`.prototype.constructor`
-`.toString()`
-@snapend
+### Builtin Objects
+
+Object <- Function <- Inbuilt Objects
+
+```js
+
+Object.prototype
+Object.prototype.hasOwnProperty()
+Object.prototype.constructor
+Object.prototype.toString()
+
+Function.prototype.call()
+Function.prototype.bind()
+Function.prototype.apply()
+Function.prototype.name
+```
+
+---
+
+### Object
+
+```js
+const joey = {
+  name: "Joey Tribbianni",
+  catchphrase: `How you doin'?`,
+  relationships: ['Angela', 'Kathy', 'Katie', 'Ginger', 'Janine'],
+  age: 26,
+};
+
+Object.is({}, {})   // false
+// shallow copy
+const joeyCopy = Object.assign({}, joey);
+// same as ===, except NaN, -0, +0
+Object.is(joey, joeyCopy)   // false
+```
+
+---
+```js
+for (const key in joey) {
+  if (joey.hasOwnProperty(key)) {
+    console.log(joey[key]);
+  }
+}
+
+// Better version
+Object.keys(joey)   // ['name', 'catchphrase', 'relationships', 'age']
+  .forEach(key => console.log(joey[key]));
+
+Object.values(joey)
+  .forEach(value => console.log(value));
+
+Object.entries(joey)
+  .forEach(([key, value]) => {
+    console.log(key, value);
+  });
+// shallow copy
+const joey = Object.fromEntries(Object.entries(joey));
+
+```
+---
+
+### this
+
+---
+
+### Destructuring, rest, spread operators
+
+---
+
+### Array
+- .forEach
+- .filter
+- .map
+- .sort
+- .reduce
+- .from
+- .fill
+- .find
+- .findIndex
+- .every
+- .some
+- .join
+
+---
+
+### Arrays also act as a Stack
+- .pop
+- .push
+
+---
+
+### And as a queue as well
+- .shift()
+- .unshift()
+
+---
+
+### Set
+- Unique elements
+---
+
+### Map
+- other types of keys
+- ordered collection
+
+---
+
+### Async: Parallel / Concurrent / Async
+
+---
+### Parallel
+
+![](assets/img/parallel.webmp)
+
+---
+### Cocurrent
+
+![](assets/img/concurrent.webmp)
+
+---
+### Async
+
+![](assets/img/async.webmp)
+
+---
+### ES6+
+- Template String, Template Tagged String
+- Arrow Functions, this binding
+- Default values, Rest Parameters, spread operators
+- Mixing above patterns for Options Object Pattern [mimicking python's *args, **kwargs]
+- String methods
+- Template tagged string: eg - html, gql, translations, shell scripts, network requests
+- proeprty shorthand
+- computed properties
+- various import and export syntax
+- static, get, set
+
+## Reference

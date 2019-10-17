@@ -1,3 +1,4 @@
+// functions too are objects!
 const getName = function name(character) {
   return character.name;
 };
